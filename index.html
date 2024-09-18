@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random GIF Landing Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: black;
+            color: #fff;
+            overflow: hidden;
+        }
+
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        button:hover::before {
+            opacity: 1;
+        }
+
+        /* GIF Container */
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            animation: fadeIn 1.5s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Search Input */
+        .search-box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: none;
+            width: 300px;
+            outline: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.heapReadyCb=window.heapReadyCb||[],window.heap=window.heap||[],heap.load=function(e,t){window.heap.envId=e,window.heap.clientConfig=t=t||{},window.heap.clientConfig.shouldFetchServerConfig=!1;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://cdn.us.heap-api.com/config/"+e+"/heap_config.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(a,r);var n=["init","startTracking","stopTracking","track","resetIdentity","identify","getSessionId","getUserId","getIdentity","addUserProperties","addEventProperties","removeEventProperty","clearEventProperties","addAccountProperties","addAdapter","addTransformer","addTransformerFn","onReady","addPageviewProperties","removePageviewProperty","clearPageviewProperties","trackPageview"],i=function(e){return function(){var t=Array.prototype.slice.call(arguments,0);window.heapReadyCb.push({name:e,fn:function(){heap[e]&&heap[e].apply(heap,t)}})}};for(var p=0;p<n.length;p++)heap[n[p]]=i(n[p])};
+        heap.load("3310053701");
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="gif-container">
+            <img id="gif" src="" alt="Random GIF">
+        </div>
+        <button onclick="surpriseMe()">surprise me</button>
+
+        <div class="search-box">
+            <input type="text" id="search" placeholder="a bear in a chair">
+            <button onclick="searchGiphy()">search</button>
+        </div>
+    </div>
+
+    <script>
+        const randomGifTerms = [
+            "cat",
+            "dog",
+            "panda",
+            "monkey",
+            "elephant",
+            "lion",
+            "tiger",
+            "bear",
+            "oops",
+            "wow",
+            "haha",
+            "cool",
+            "laugh",
+            "dance",
+            "sing",
+            "happy",
+            "sad",
+            "angry",
+            "scared",
+            "excited",
+            "surprised",
+            "confused",
+            "sleepy",
+            "funny",
+            "cute",
+            "cool",
+            "hot",
+            "cold",
+            "rain",
+            "snow",
+            "wind",
+            "fire",
+            "water",
+            "earth",
+            "air",
+            "light",
+            "dark",
+            "love",
+            "hate",
+            "fear",
+            "anger",
+            "sadness",
+            "happiness",
+            "excitement",
+            "surprise",
+            "confusion",
+            "sleep",
+            "dream",
+            "snoop dogg",
+            "kanye west",
+            "jay z",
+            "drake",
+            "taylor swift",
+            "beyonce",
+            "selena gomez",
+            "justin bieber",
+            "lady gaga",
+            "rihanna",
+            "katy perry",
+            "madonna",
+            "britney spears",
+            "nirvana",
+            "kurt cobain",
+            "nelly",
+            "eminem",
+            "lost",
+            "found",
+            "alone",
+            "together",
+            "high",
+            "low",
+            "fast",
+            "slow",
+            "big",
+            "small",
+            "tall",
+            "short",
+            "wide",
+            "narrow",
+            "long",
+            "short",
+            "wide",
+            "morpheus",
+            "matrix",
+            "neo",
+            "trinity",
+            "the office",
+            "parks and rec",
+            "friends",
+            "seinfeld",
+            "how i met your mother",
+            "the big bang theory",
+            "little rascals",
+            "the simpsons",
+            "family guy",
+            "south park",
+            "futurama",
+            "the daily show",
+            "the late show",
+            "laughing",
+            "funny",
+            "joke",
+            "comedy",
+            "funny cat",
+            "funny dog",
+            "funny monkey",
+            "funny panda",
+            "funny bear",
+            "funny oops",
+            "dance",
+            "sing",
+            "happy",
+            "sad",
+            "angry",
+            "scared",
+            "excited",
+            "surprised",
+            "what if",
+            "imagine",
+            "space",
+            "time",
+            "future",
+            "past",
+            "dream",
+            "reality",
+            "magic",
+            "illusion",
+        ];
+
+        const apiKey = "1RXqN42sWeNUmP4tBWX9Gxu7cVhP0EJi";
+
+        function surpriseMe() {
+            const randomIndex = Math.floor(Math.random() * randomGifTerms.length);
+            const searchTerm = randomGifTerms[randomIndex];
+            searchGiphy(searchTerm);
+        }
+
+        async function searchGiphy(term) {
+            let searchTerm = term;
+            if (!searchTerm) {
+                searchTerm = document.getElementById('search').value;
+            }
+            if (searchTerm.trim() === "") {
+                alert("Please enter a search term.");
+                return;
+            }
+            
+            const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=1`;
+            console.log('@@@apiUrl', apiUrl);
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.data.length > 0) {
+                    const gifUrl = data.data[0].images.original.url;
+                    const gifElement = document.getElementById('gif');
+                    gifElement.src = gifUrl;
+                    gifElement.style.display = 'block';
+                } else {
+                    alert("No GIFs found for that search term.");
+                }
+            } catch (error) {
+                console.error("Error fetching GIF:", error);
+                alert("Failed to fetch GIF. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
